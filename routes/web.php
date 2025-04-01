@@ -2,7 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\AuthController;
 
+Route::post('register',[UserAuthController::class,'register']);
+Route::post('login',[UserAuthController::class,'login']);
+Route::post('logout',[UserAuthController::class,'logout'])
+  ->middleware('auth:sanctum');
+
+  
 Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
